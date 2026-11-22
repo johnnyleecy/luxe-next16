@@ -7,7 +7,7 @@
     "build": "next build --webpack",
     "dev:turbo": "next dev",
     "build:turbo": "next build",
-    "start": "next start",
+    "start": "next start -p 3014",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test:e2e": "playwright test"
