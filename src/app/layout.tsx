@@ -15,6 +15,8 @@ const GTM_SCRIPT = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':ne
 const META_PIXEL_ID = '1191403876557834';
 const META_PIXEL_SCRIPT = `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`;
 
+const WA_CLICK_SCRIPT = `document.addEventListener('click',function(e){var a=e.target.closest('a');if(a&&a.href&&a.href.indexOf('wa.me')>-1){if(window.fbq){fbq('track','Contact');}}});`;
+
 export default function RootLayout({children}:{children:React.ReactNode}){
   return (
     <html lang="zh-Hant">
@@ -27,6 +29,7 @@ export default function RootLayout({children}:{children:React.ReactNode}){
         <noscript>
           <img height="1" width="1" style={{display:'none'}} src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`} alt="" />
         </noscript>
+        <script dangerouslySetInnerHTML={{__html: WA_CLICK_SCRIPT}} />
         <a className="skip-link" href="#main-content">跳至主要內容</a>
         <Header/>
         <main id="main-content">{children}</main>
